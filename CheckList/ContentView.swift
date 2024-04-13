@@ -71,19 +71,20 @@ struct ContentView: View {
             }
         }
         .sheet(isPresented: $isShowAddItemSheet) {
-            VStack {
-                HStack {
-                    Text("Title")
-                        .font(.headline)
-                    Spacer()
-                    TextField("", text: $textFieldInput)
-                        .border(.primary)
-                }
-                Button("add") {
+            VStack(spacing: 20) {
+                TextField("Enter your title here", text: $textFieldInput)
+                    .overlay(
+                        RoundedRectangle(cornerSize: CGSize(width: 8.0, height: 8.0))
+                        .stroke(.gray, lineWidth: 2.0)
+                        .padding(-8.0)
+                )
+                .padding(16.0)
+                Button("Add") {
                     add(item: ChecklistItem(title: textFieldInput, isChecked: false))
                     textFieldInput = ""
                     isShowAddItemSheet = false
                 }
+                .buttonStyle(RoundedButtonStyle())
             }
             .padding()
             .presentationDetents([.fraction(0.2)])
