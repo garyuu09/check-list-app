@@ -13,18 +13,19 @@ struct UpdateCheckListItemView: View {
     @State private var textFieldInput = ""
 
     var body: some View {
-        VStack {
-            HStack {
-                Text("Title")
-                    .font(.headline)
-                Spacer()
-                TextField("", text: $textFieldInput)
-                    .border(.primary)
-            }
-            Button("update") {
+        VStack(spacing: 10) {
+            TextField("Enter your title here", text: $textFieldInput)
+                .overlay(
+                    RoundedRectangle(cornerSize: CGSize(width: 8.0, height: 8.0))
+                        .stroke(.gray, lineWidth: 2.0)
+                        .padding(-8.0)
+                )
+                .padding(16.0)
+            Button("Update") {
                 dismiss()
                 item.title = textFieldInput
             }
+            .buttonStyle(RoundedButtonStyle())
         }
     }
 }
