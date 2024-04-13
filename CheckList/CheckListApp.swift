@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct CheckListApp: App {
+    @AppStorage("displayMode") var displayMode: DisplayMode = .system
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LaunchScreen()
+                .preferredColorScheme(displayMode == .system ? nil : (displayMode == .dark ? .dark : .light))
         }
+        .modelContainer(for: [ChecklistItem.self])
     }
 }
