@@ -6,22 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
-// 項目を表すデータモデル
-struct ChecklistItem: Identifiable, Equatable {
-    let id = UUID()
-    var title: String
-    var isChecked: Bool
-}
+// チェックリストのビュー
+struct ContentView: View {
+    @State private var textFieldInput = ""
+    @State private var isShowAddItemSheet = false
+    @State private var itemEdit: ChecklistItem?
+    @State private var isShowSettingView = false
 
-// チェックリストのビューモデル
-class ChecklistViewModel: ObservableObject {
+    @Environment(\.modelContext) private var context
     // チェックリストの項目
-    @Published var items: [ChecklistItem] = [
-        ChecklistItem(title: "レシート", isChecked: false),
-        ChecklistItem(title: "エコバッグ", isChecked: true),
-        // ...その他の項目
-    ]
+    @Query private var items: [ChecklistItem]
 
     // チェックされていない項目
     var uncheckedItems: [ChecklistItem] {
@@ -33,40 +29,87 @@ class ChecklistViewModel: ObservableObject {
         items.filter { $0.isChecked }
     }
 
+    var body: some View {
+        ZStack {
+            NavigationStack {
+                List {
+                    Section(header: Text("未チェック")) {
+                        ForEach(uncheckedItems) { item in
+                            checklistRow(for: item)
+                        }
+                    }
+                    Section(header: Text("チェック済み")) {
+                        ForEach(checkedItems) { item in
+                            checklistRow(for: item)
+                        }
+                    }
+                }
+                .navigationTitle("Check List")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: SettingView()) {
+                            Image(systemName: "gearshape")
+                        }
+                    }
+                }
+            }
+            // 丸い追加ボタン
+            .safeAreaInset(edge: .bottom,
+                           alignment: .trailing) {
+                Button {
+                    isShowAddItemSheet = true
+                } label: {
+                    Image(systemName: "plus.circle.fill")
+                        .resizable()
+                        .frame(width: 70, height: 70)
+                        .foregroundColor(.gray)
+                }
+                .padding(20)
+                .clipShape(Circle())
+                .zIndex(1) // ボタンを最前面に表示
+            }
+        }
+        .sheet(isPresented: $isShowAddItemSheet) {
+            VStack {
+                HStack {
+                    Text("Title")
+                        .font(.headline)
+                    Spacer()
+                    TextField("", text: $textFieldInput)
+                        .border(.primary)
+                }
+                Button("add") {
+                    add(item: ChecklistItem(title: textFieldInput, isChecked: false))
+                    textFieldInput = ""
+                    isShowAddItemSheet = false
+                }
+            }
+            .padding()
+            .presentationDetents([.fraction(0.2)])
+        }
+        .sheet(item: $itemEdit) {
+            itemEdit = nil
+        } content: { item in
+            UpdateCheckListItemView(item: item)
+                .padding()
+                .presentationDetents([.fraction(0.2)])
+        }
+    }
     // 項目のチェック状態をトグルする
     func toggleChecked(for item: ChecklistItem) {
         if let index = items.firstIndex(where: { $0.id == item.id }) {
             items[index].isChecked.toggle()
-            // チェック状態が変わったらリストを更新
-            let item = items.remove(at: index)
-            items.append(item)
         }
     }
-}
+    // データの追加
+    func add(item: ChecklistItem) {
+        context.insert(item)
+    }
 
-// チェックリストのビュー
-struct ContentView: View {
-    @StateObject var viewModel = ChecklistViewModel()
-
-    var body: some View {
-        NavigationStack {
-            List {
-                Section(header: Text("未チェック")) {
-                    ForEach(viewModel.uncheckedItems) { item in
-                        checklistRow(for: item)
-                    }
-                }
-
-                Section(header: Text("チェック済み")) {
-                    ForEach(viewModel.checkedItems) { item in
-                        checklistRow(for: item)
-                    }
-                }
-            }
-            .navigationTitle("Check List")
-            .navigationBarTitleDisplayMode(.inline)
-        }
-
+    // データの削除
+    func delete(item: ChecklistItem) {
+        context.delete(item)
     }
 
     // チェックリストの各行を表示するビュー
@@ -74,10 +117,29 @@ struct ContentView: View {
         HStack {
             Image(systemName: item.isChecked ? "checkmark.square" : "square")
                 .onTapGesture {
-                    viewModel.toggleChecked(for: item)
+                    toggleChecked(for: item)
                 }
             Text(item.title)
                 .strikethrough(item.isChecked, color: .primary)
+        }
+        .swipeActions {
+            Button(role: .destructive) {
+
+                withAnimation {
+                    context.delete(item)
+                }
+
+            } label: {
+                Label("Delete", systemImage: "trash")
+                    .symbolVariant(.fill)
+            }
+
+            Button {
+                itemEdit = item
+            } label: {
+                Label("Edit", systemImage: "pencil")
+            }
+            .tint(.orange)
         }
     }
 }
@@ -85,5 +147,4 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .navigationBarTitle("チェックリスト", displayMode: .inline)
 }
