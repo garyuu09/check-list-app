@@ -71,7 +71,7 @@ struct ContentView: View {
             }
         }
         .sheet(isPresented: $isShowAddItemSheet) {
-            VStack(spacing: 20) {
+            VStack(spacing: 10) {
                 TextField("Enter your title here", text: $textFieldInput)
                     .overlay(
                         RoundedRectangle(cornerSize: CGSize(width: 8.0, height: 8.0))
