@@ -34,18 +34,18 @@ struct ContentView: View {
         ZStack {
             NavigationStack {
                 List {
-                    Section(header: Text("未チェック")) {
+                    Section("Unchecked") {
                         ForEach(uncheckedItems) { item in
                             checklistRow(for: item)
                         }
                     }
-                    Section(header: Text("チェック済み")) {
+                    Section("Checked") {
                         ForEach(checkedItems) { item in
                             checklistRow(for: item)
                         }
                     }
                 }
-                .navigationTitle("Check List")
+                .navigationTitle("Shopping List")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {

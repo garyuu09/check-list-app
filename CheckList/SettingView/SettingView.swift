@@ -51,7 +51,6 @@ struct SettingView: View {
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
-            .font(.headline)
         }
     }
 }

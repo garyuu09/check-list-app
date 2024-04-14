@@ -63,10 +63,9 @@
 			children = (
 				D6ADEE182BCABEDD004FB0EF /* LaunchScreen.swift */,
 				D64655C72BC83E2800A0B2C9 /* CheckListApp.swift */,
-				D64655C92BC83E2800A0B2C9 /* ContentView.swift */,
-				D6ADEE1A2BCAC1FB004FB0EF /* SettingView.swift */,
-				D6ADEE162BCAB6A4004FB0EF /* UpdateCheckListItemView.swift */,
-				D6ADEE142BCA9642004FB0EF /* CheckListItem.swift */,
+				D6ADEE202BCBBACF004FB0EF /* Model */,
+				D6ADEE1F2BCBBAA3004FB0EF /* MainView */,
+				D6ADEE212BCBBAE4004FB0EF /* SettingView */,
 				D6ADEE1C2BCAD1F7004FB0EF /* Util */,
 				D64655CB2BC83E2900A0B2C9 /* Assets.xcassets */,
 				D64655CD2BC83E2900A0B2C9 /* Preview Content */,
@@ -88,6 +87,31 @@
 				D6ADEE1D2BCAD21D004FB0EF /* CustomButtonStyle.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		D6ADEE1F2BCBBAA3004FB0EF /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				D64655C92BC83E2800A0B2C9 /* ContentView.swift */,
+				D6ADEE162BCAB6A4004FB0EF /* UpdateCheckListItemView.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		D6ADEE202BCBBACF004FB0EF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D6ADEE142BCA9642004FB0EF /* CheckListItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D6ADEE212BCBBAE4004FB0EF /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				D6ADEE1A2BCAC1FB004FB0EF /* SettingView.swift */,
+			);
+			path = SettingView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
