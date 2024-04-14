@@ -13,7 +13,6 @@ struct LaunchScreen: View {
     var body: some View {
         if isLoading {
             ZStack {
-//                    .ignoresSafeArea() // ステータスバーまで塗り潰すために必要
                 VStack(spacing: 0) {
                     Image("icon_40x40")
                         .padding()
