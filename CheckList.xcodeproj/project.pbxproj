@@ -61,8 +61,8 @@
 		D64655C62BC83E2800A0B2C9 /* CheckList */ = {
 			isa = PBXGroup;
 			children = (
-				D6ADEE182BCABEDD004FB0EF /* LaunchScreen.swift */,
 				D64655C72BC83E2800A0B2C9 /* CheckListApp.swift */,
+				D6ADEE182BCABEDD004FB0EF /* LaunchScreen.swift */,
 				D6ADEE202BCBBACF004FB0EF /* Model */,
 				D6ADEE1F2BCBBAA3004FB0EF /* MainView */,
 				D6ADEE212BCBBAE4004FB0EF /* SettingView */,
