@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var isShowAddItemSheet = false
     @State private var itemEdit: ChecklistItem?
     @State private var isShowSettingView = false
+    @State private var isShowAddButton = true
 
     @Environment(\.modelContext) private var context
     // チェックリストの項目
@@ -48,7 +49,15 @@ struct ContentView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: SettingView()) {
+                        NavigationLink {
+                            SettingView()
+                                .onAppear {
+                                    isShowAddButton = false  // 遷移時にボタンを非表示にする
+                                }
+                                .onDisappear {
+                                    isShowAddButton = true   // 戻る時にボタンを表示する
+                                }
+                        } label: {
                             Image(systemName: "gearshape")
                         }
                     }
@@ -68,6 +77,8 @@ struct ContentView: View {
                 .padding(20)
                 .clipShape(Circle())
                 .zIndex(1) // ボタンを最前面に表示
+                .disabled(!isShowAddButton)
+                .opacity(isShowAddButton ? 1 : 0)
             }
         }
         .sheet(isPresented: $isShowAddItemSheet) {
