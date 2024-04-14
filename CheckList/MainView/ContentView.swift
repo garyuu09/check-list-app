@@ -45,7 +45,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                .navigationTitle("Check List")
+                .navigationTitle("Shopping List")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
