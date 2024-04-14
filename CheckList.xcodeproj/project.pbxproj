@@ -16,6 +16,7 @@
 		D6ADEE192BCABEDD004FB0EF /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ADEE182BCABEDD004FB0EF /* LaunchScreen.swift */; };
 		D6ADEE1B2BCAC1FB004FB0EF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ADEE1A2BCAC1FB004FB0EF /* SettingView.swift */; };
 		D6ADEE1E2BCAD21D004FB0EF /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ADEE1D2BCAD21D004FB0EF /* CustomButtonStyle.swift */; };
+		D6ADEE232BCBC494004FB0EF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D6ADEE222BCBC494004FB0EF /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		D6ADEE182BCABEDD004FB0EF /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		D6ADEE1A2BCAC1FB004FB0EF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		D6ADEE1D2BCAD21D004FB0EF /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
+		D6ADEE222BCBC494004FB0EF /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +63,9 @@
 		D64655C62BC83E2800A0B2C9 /* CheckList */ = {
 			isa = PBXGroup;
 			children = (
-				D6ADEE182BCABEDD004FB0EF /* LaunchScreen.swift */,
 				D64655C72BC83E2800A0B2C9 /* CheckListApp.swift */,
+				D6ADEE222BCBC494004FB0EF /* Localizable.xcstrings */,
+				D6ADEE182BCABEDD004FB0EF /* LaunchScreen.swift */,
 				D6ADEE202BCBBACF004FB0EF /* Model */,
 				D6ADEE1F2BCBBAA3004FB0EF /* MainView */,
 				D6ADEE212BCBBAE4004FB0EF /* SettingView */,
@@ -156,6 +159,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = D64655BB2BC83E2800A0B2C9;
 			productRefGroup = D64655C52BC83E2800A0B2C9 /* Products */;
@@ -174,6 +178,7 @@
 			files = (
 				D64655CF2BC83E2900A0B2C9 /* Preview Assets.xcassets in Resources */,
 				D64655CC2BC83E2900A0B2C9 /* Assets.xcassets in Resources */,
+				D6ADEE232BCBC494004FB0EF /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
