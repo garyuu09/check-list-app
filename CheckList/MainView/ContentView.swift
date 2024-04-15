@@ -147,6 +147,13 @@ struct ContentView: View {
                 }
             Text(item.title)
                 .strikethrough(item.isChecked, color: .primary)
+            Spacer()
+            Image(systemName: "xmark")
+                .onTapGesture {
+                    withAnimation {
+                        delete(item: item)
+                    }
+                }
         }
         .swipeActions {
             Button(role: .destructive) {
