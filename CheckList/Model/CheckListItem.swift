@@ -13,9 +13,11 @@ import SwiftData
 final class ChecklistItem: Identifiable, Equatable {
     var title: String
     var isChecked: Bool
+    var orderIndex: Int
 
-    init(title: String, isChecked: Bool) {
+    init(title: String, isChecked: Bool, orderIndex: Int) {
         self.title = title
         self.isChecked = isChecked
+        self.orderIndex = orderIndex
     }
 }
