@@ -58,6 +58,7 @@ struct ContentView: View {
                         }
                     }
                 }
+                .environment(\.editMode, .constant(.active))
                 .navigationTitle("Shopping List")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
