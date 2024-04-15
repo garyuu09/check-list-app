@@ -18,8 +18,7 @@ struct ContentView: View {
 
     @Environment(\.modelContext) private var context
     // チェックリストの項目
-    @Query private var items: [ChecklistItem]
-
+    @Query(sort: \ChecklistItem.orderIndex) private var items: [ChecklistItem]
     // チェックされていない項目
     var uncheckedItems: [ChecklistItem] {
         items.filter { !$0.isChecked }
@@ -38,13 +37,28 @@ struct ContentView: View {
                         ForEach(uncheckedItems) { item in
                             checklistRow(for: item)
                         }
+                        .onMove { source, destination in
+                            var updatedItems = uncheckedItems
+                            updatedItems.move(fromOffsets: source, toOffset: destination)
+                            for (index, item) in updatedItems.enumerated() {
+                                item.orderIndex = index
+                            }
+                        }
                     }
                     Section("Checked") {
                         ForEach(checkedItems) { item in
                             checklistRow(for: item)
                         }
+                        .onMove { source, destination in
+                            var updatedItems = checkedItems
+                            updatedItems.move(fromOffsets: source, toOffset: destination)
+                            for (index, item) in updatedItems.enumerated() {
+                                item.orderIndex = index
+                            }
+                        }
                     }
                 }
+                .environment(\.editMode, .constant(.active))
                 .navigationTitle("Shopping List")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
@@ -91,7 +105,7 @@ struct ContentView: View {
                 )
                 .padding(16.0)
                 Button("Add") {
-                    add(item: ChecklistItem(title: textFieldInput, isChecked: false))
+                    add(item: ChecklistItem(title: textFieldInput, isChecked: false, orderIndex: items.count ))
                     textFieldInput = ""
                     isShowAddItemSheet = false
                 }
@@ -133,25 +147,13 @@ struct ContentView: View {
                 }
             Text(item.title)
                 .strikethrough(item.isChecked, color: .primary)
-        }
-        .swipeActions {
-            Button(role: .destructive) {
-
-                withAnimation {
-                    context.delete(item)
+            Spacer()
+            Image(systemName: "xmark")
+                .onTapGesture {
+                    withAnimation {
+                        delete(item: item)
+                    }
                 }
-
-            } label: {
-                Label("Delete", systemImage: "trash")
-                    .symbolVariant(.fill)
-            }
-
-            Button {
-                itemEdit = item
-            } label: {
-                Label("Edit", systemImage: "pencil")
-            }
-            .tint(.orange)
         }
     }
 }
