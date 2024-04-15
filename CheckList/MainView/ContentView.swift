@@ -155,25 +155,6 @@ struct ContentView: View {
                     }
                 }
         }
-        .swipeActions {
-            Button(role: .destructive) {
-
-                withAnimation {
-                    context.delete(item)
-                }
-
-            } label: {
-                Label("Delete", systemImage: "trash")
-                    .symbolVariant(.fill)
-            }
-
-            Button {
-                itemEdit = item
-            } label: {
-                Label("Edit", systemImage: "pencil")
-            }
-            .tint(.orange)
-        }
     }
 }
 
