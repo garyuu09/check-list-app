@@ -114,9 +114,7 @@ struct ContentView: View {
             .padding()
             .presentationDetents([.fraction(0.2)])
         }
-        .sheet(item: $itemEdit) {
-            itemEdit = nil
-        } content: { item in
+        .sheet(item: $itemEdit) { item in
             UpdateCheckListItemView(item: item)
                 .padding()
                 .presentationDetents([.fraction(0.2)])
@@ -145,9 +143,15 @@ struct ContentView: View {
                 .onTapGesture {
                     toggleChecked(for: item)
                 }
-            Text(item.title)
-                .strikethrough(item.isChecked, color: .primary)
-            Spacer()
+            HStack {
+                Text(item.title)
+                    .strikethrough(item.isChecked, color: .primary)
+                Spacer()
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                itemEdit = item
+            }
             Image(systemName: "xmark")
                 .onTapGesture {
                     withAnimation {
