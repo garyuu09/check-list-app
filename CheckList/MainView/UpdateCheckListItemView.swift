@@ -27,6 +27,9 @@ struct UpdateCheckListItemView: View {
             }
             .buttonStyle(RoundedButtonStyle())
         }
+        .onAppear {
+            textFieldInput = item.title
+        }
     }
 }
 
