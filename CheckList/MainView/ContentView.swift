@@ -15,6 +15,7 @@ struct ContentView: View {
     @State private var itemEdit: ChecklistItem?
     @State private var isShowSettingView = false
     @State private var isShowAddButton = true
+    @State private var isNavigatingToSetting = false
 
     @Environment(\.modelContext) private var context
     // チェックリストの項目
@@ -61,17 +62,16 @@ struct ContentView: View {
                 .environment(\.editMode, .constant(.active))
                 .navigationTitle("Shopping List")
                 .navigationBarTitleDisplayMode(.inline)
+                .onChange(of: isNavigatingToSetting) { isActive in
+                    if isActive {
+                        isShowAddButton = false
+                    } else {
+                        isShowAddButton = true
+                    }
+                }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink {
-                            SettingView()
-                                .onAppear {
-                                    isShowAddButton = false  // 遷移時にボタンを非表示にする
-                                }
-                                .onDisappear {
-                                    isShowAddButton = true   // 戻る時にボタンを表示する
-                                }
-                        } label: {
+                        NavigationLink(destination: SettingView(), isActive: $isNavigatingToSetting) {
                             Image(systemName: "gearshape")
                         }
                     }

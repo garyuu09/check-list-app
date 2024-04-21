@@ -6,6 +6,20 @@
 //
 
 import SwiftUI
+import WebKit
+
+struct WebView: UIViewRepresentable {
+    let url: URL
+
+    func makeUIView(context: Context) -> WKWebView {
+        return WKWebView()
+    }
+
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        let request = URLRequest(url: url)
+        uiView.load(request)
+    }
+}
 
 enum DisplayMode: String {
     case light, dark, system
@@ -24,17 +38,21 @@ struct SettingView: View {
                         Text("System").tag(DisplayMode.system)
                     }
                     .pickerStyle(.automatic)
-                    NavigationLink("Language", destination: EmptyView())
+                    // TODO: Ver.2.00で言語切り替え機能を対応する。
+//                    NavigationLink("Language", destination: EmptyView())
                 }
                 Section("Support") {
-                    NavigationLink("Service Notice", destination: EmptyView())
-                    NavigationLink("How to Use", destination: EmptyView())
-                    NavigationLink("Contact Us", destination: EmptyView())
+                    NavigationLink("Service Notice", destination: ServiceNoticeView())
+                    // TODO: Ver.2.00で使い方に関する画面を対応する。
+//                    NavigationLink("How to Use", destination: EmptyView())
+                    // TODO: Ver.2.00で問い合わせ機能を対応する。
+//                    NavigationLink("Contact Us", destination: EmptyView())
                 }
                 Section("About ShoppingList App") {
-                    NavigationLink("Terms of Service", destination: EmptyView())
-                    NavigationLink("Privacy Policy", destination: EmptyView())
-                    NavigationLink("Review App", destination: EmptyView())
+                    // TODO: Ver.2.00で対応する。
+//                    NavigationLink("Terms of Service", destination: TermsOfServiceView())
+//                    NavigationLink("Privacy Policy", destination: PrivacyPolicyView())
+                    NavigationLink("Review App", destination: WebView(url: URL(string: "https://apps.apple.com/us/app/your-app-name/idYOUR_APP_ID")!))
                 }
 
                 Section {
