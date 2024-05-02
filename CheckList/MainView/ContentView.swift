@@ -60,7 +60,7 @@ struct ContentView: View {
                     }
                 }
                 .environment(\.editMode, .constant(.active))
-                .navigationTitle("Shopping List")
+                .navigationTitle("Shopping CheckList")
                 .navigationBarTitleDisplayMode(.inline)
                 .onChange(of: isNavigatingToSetting) { isActive in
                     if isActive {

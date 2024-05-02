@@ -48,10 +48,10 @@ struct SettingView: View {
                     // TODO: Ver.2.00で問い合わせ機能を対応する。
 //                    NavigationLink("Contact Us", destination: EmptyView())
                 }
-                Section("About ShoppingList App") {
+                Section("About Shopping CheckList App") {
                     // TODO: Ver.2.00で対応する。
 //                    NavigationLink("Terms of Service", destination: TermsOfServiceView())
-//                    NavigationLink("Privacy Policy", destination: PrivacyPolicyView())
+                    NavigationLink("Privacy Policy", destination: WebView(url: URL(string: "https://garyuu09.github.io/shopping-check-list-privacy-policy/")!))
                     NavigationLink("Review App", destination: WebView(url: URL(string: "https://apps.apple.com/us/app/your-app-name/idYOUR_APP_ID")!))
                 }
 
@@ -59,7 +59,7 @@ struct SettingView: View {
                     //
                 } footer: {
                     VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
-                        Text("©ShoppingList")
+                        Text("©Shopping CheckList")
                             .font(.caption)
                         Text("Ver. 1.00")
                             .font(.caption2)
