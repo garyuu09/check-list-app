@@ -11,7 +11,13 @@ struct ServiceNoticeView: View {
     var body: some View {
         NavigationStack {
             List {
-                Text("リリースしました。")
+                HStack {
+                    Text("Shopping Checklist app released🎉")
+                    Spacer()
+                    Text("2024/05/03")
+                        .font(.callout)
+                        .foregroundStyle(.secondary)
+                }
             }
         }
     }

@@ -16,7 +16,7 @@ struct LaunchScreen: View {
                 VStack(spacing: 0) {
                     Image("icon_40x40")
                         .padding()
-                    Text("Shopping List")
+                    Text("Shopping CheckList")
                         .font(.headline)
                 }
             }
