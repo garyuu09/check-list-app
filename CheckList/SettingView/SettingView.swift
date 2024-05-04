@@ -52,7 +52,11 @@ struct SettingView: View {
                     // TODO: Ver.2.00で対応する。
 //                    NavigationLink("Terms of Service", destination: TermsOfServiceView())
                     NavigationLink("Privacy Policy", destination: WebView(url: URL(string: "https://garyuu09.github.io/shopping-check-list-privacy-policy/")!))
+<<<<<<< HEAD
                     NavigationLink("Review App", destination: WebView(url: URL(string: "https://apps.apple.com/us/app/your-app-name/idYOUR_APP_ID")!))
+=======
+                    NavigationLink("Review App", destination: WebView(url: URL(string: "https://apps.apple.com/us/app/id6499101372?action=write-review")!))
+>>>>>>> origin/develop
                 }
 
                 Section {
