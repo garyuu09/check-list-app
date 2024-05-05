@@ -1,9 +1,9 @@
 # Shopping CheckList
 
-<img src="https://github.com/garyuu09/check-list-app/assets/53298771/9f2eb024-a48f-4795-bcaf-cd2ec1c0ac44" width="207">
-<img src="https://github.com/garyuu09/check-list-app/assets/53298771/01c8f9bb-b593-4f77-a266-ca44cb7b3c76" width="207">
-<img src="https://github.com/garyuu09/check-list-app/assets/53298771/f20a4857-720d-4cb2-8a0b-a87eaa37c578" width="207">
-<img src="https://github.com/garyuu09/check-list-app/assets/53298771/36df190b-ecfe-4ec1-aa89-141771973a1a" width="207">
+<img src="https://github.com/garyuu09/check-list-app/assets/53298771/9f2eb024-a48f-4795-bcaf-cd2ec1c0ac44" width="20%">
+<img src="https://github.com/garyuu09/check-list-app/assets/53298771/01c8f9bb-b593-4f77-a266-ca44cb7b3c76" width="20%">
+<img src="https://github.com/garyuu09/check-list-app/assets/53298771/f20a4857-720d-4cb2-8a0b-a87eaa37c578" width="20%">
+<img src="https://github.com/garyuu09/check-list-app/assets/53298771/36df190b-ecfe-4ec1-aa89-141771973a1a" width="20%">
 
 Shopping CheckList は、お買い物のときに便利なシンプルなチェックリストアプリです。
 
