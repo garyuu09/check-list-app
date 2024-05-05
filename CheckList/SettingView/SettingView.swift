@@ -27,6 +27,7 @@ enum DisplayMode: String {
 
 struct SettingView: View {
     @AppStorage("displayMode") private var displayMode: DisplayMode = .system
+    let appStoreURL = URL(string: "itms-apps://apps.apple.com/en/app/simple-shopping-checklist/id6499101372")
 
     var body: some View {
         NavigationStack {
@@ -52,7 +53,12 @@ struct SettingView: View {
                     // TODO: Ver.2.00で対応する。
 //                    NavigationLink("Terms of Service", destination: TermsOfServiceView())
                     NavigationLink("Privacy Policy", destination: WebView(url: URL(string: "https://garyuu09.github.io/shopping-check-list-privacy-policy/")!))
-                    NavigationLink("Review App", destination: WebView(url: URL(string: "https://apps.apple.com/us/app/id6499101372?action=write-review")!))
+                    Button("Review App") {
+                            // URL が有効かどうかチェックしてから開く
+                            if let url = appStoreURL, UIApplication.shared.canOpenURL(url) {
+                                UIApplication.shared.open(url)
+                            }
+                    }
                 }
 
                 Section {
