@@ -26,7 +26,9 @@ enum DisplayMode: String {
 }
 
 struct SettingView: View {
+    @EnvironmentObject var networkState: MonitoringNetworkState
     @AppStorage("displayMode") private var displayMode: DisplayMode = .system
+    let privacyPolicyURL = URL(string: "https://garyuu09.github.io/shopping-check-list-privacy-policy/")
     let appStoreURL = URL(string: "itms-apps://apps.apple.com/en/app/simple-shopping-checklist/id6499101372")
 
     var body: some View {
@@ -51,13 +53,26 @@ struct SettingView: View {
                 }
                 Section("About Shopping CheckList App") {
                     // TODO: Ver.2.00で対応する。
-//                    NavigationLink("Terms of Service", destination: TermsOfServiceView())
-                    NavigationLink("Privacy Policy", destination: WebView(url: URL(string: "https://garyuu09.github.io/shopping-check-list-privacy-policy/")!))
+                    // NavigationLink("Terms of Service", destination: TermsOfServiceView())
+                    NavigationLink {
+                        //ここに遷移させたいViewのインスタンスを渡す
+                        if networkState.isConnected {
+                            WebView(url: privacyPolicyURL!)
+                        } else {
+                            ContentUnavailableView(
+                                "No Internet",
+                                systemImage: "wifi.exclamationmark",
+                                description: Text("Try checking the network cables, modem, and router or reconnecting to Wi-Fi.")
+                            )
+                        }
+                    } label: {
+                        Text("Privacy Policy")
+                    }
                     Button("Review App") {
-                            // URL が有効かどうかチェックしてから開く
-                            if let url = appStoreURL, UIApplication.shared.canOpenURL(url) {
-                                UIApplication.shared.open(url)
-                            }
+                        // URL が有効かどうかチェックしてから開く
+                        if let url = appStoreURL, UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url)
+                        }
                     }
                 }
 
