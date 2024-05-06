@@ -18,6 +18,7 @@
 		D6ADEE1B2BCAC1FB004FB0EF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ADEE1A2BCAC1FB004FB0EF /* SettingView.swift */; };
 		D6ADEE1E2BCAD21D004FB0EF /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ADEE1D2BCAD21D004FB0EF /* CustomButtonStyle.swift */; };
 		D6ADEE232BCBC494004FB0EF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D6ADEE222BCBC494004FB0EF /* Localizable.xcstrings */; };
+		D6B9598F2BE902A90012892A /* MonitoringNetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B9598E2BE902A90012892A /* MonitoringNetworkState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		D6ADEE1A2BCAC1FB004FB0EF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		D6ADEE1D2BCAD21D004FB0EF /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
 		D6ADEE222BCBC494004FB0EF /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		D6B9598E2BE902A90012892A /* MonitoringNetworkState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringNetworkState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				D6ADEE1D2BCAD21D004FB0EF /* CustomButtonStyle.swift */,
+				D6B9598E2BE902A90012892A /* MonitoringNetworkState.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			files = (
 				D6AA12C62BD54CD800D08C56 /* ServiceNoticeView.swift in Sources */,
 				D6ADEE152BCA9642004FB0EF /* CheckListItem.swift in Sources */,
+				D6B9598F2BE902A90012892A /* MonitoringNetworkState.swift in Sources */,
 				D64655CA2BC83E2800A0B2C9 /* ContentView.swift in Sources */,
 				D6ADEE192BCABEDD004FB0EF /* LaunchScreen.swift in Sources */,
 				D6ADEE1B2BCAC1FB004FB0EF /* SettingView.swift in Sources */,

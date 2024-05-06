@@ -77,6 +77,16 @@
         }
       }
     },
+    "No Internet" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インターネット未接続"
+          }
+        }
+      }
+    },
     "Privacy Policy" : {
       "localizations" : {
         "ja" : {
@@ -163,6 +173,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "テーマカラー"
+          }
+        }
+      }
+    },
+    "Try checking the network cables, modem, and router or reconnecting to Wi-Fi." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インターネットに接続されていません。機内モードをオフにするか、Wi-Fiネットワークに接続してください。"
           }
         }
       }
