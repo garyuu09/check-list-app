@@ -83,7 +83,7 @@ struct SettingView: View {
                     //
                 } footer: {
                     VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
-                        Text("©Shopping CheckList")
+                        Text("©Simple Shopping CheckList")
                             .font(.caption)
                         Text("Ver. \(version)")
                             .font(.caption2)
