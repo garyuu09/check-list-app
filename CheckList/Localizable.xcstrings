@@ -207,7 +207,11 @@
         }
       }
     },
+    "Ver. %@" : {
+
+    },
     "Ver. 1.00" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

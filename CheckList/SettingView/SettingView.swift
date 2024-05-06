@@ -28,6 +28,9 @@ enum DisplayMode: String {
 struct SettingView: View {
     @EnvironmentObject var networkState: MonitoringNetworkState
     @AppStorage("displayMode") private var displayMode: DisplayMode = .system
+    let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "Unknown"
+    // TODO: debug時のみ、build番号を表示するようにする。
+    let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "Unknown"
     let privacyPolicyURL = URL(string: "https://garyuu09.github.io/shopping-check-list-privacy-policy/")
     let appStoreURL = URL(string: "itms-apps://apps.apple.com/en/app/simple-shopping-checklist/id6499101372")
 
@@ -82,7 +85,7 @@ struct SettingView: View {
                     VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
                         Text("©Shopping CheckList")
                             .font(.caption)
-                        Text("Ver. 1.00")
+                        Text("Ver. \(version)")
                             .font(.caption2)
                     })
                     .frame(maxWidth: .infinity)
