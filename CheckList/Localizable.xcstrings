@@ -1,7 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "©Shopping CheckList" : {
+    "©Simple Shopping CheckList" : {
 
     },
     "2024/05/03" : {
@@ -207,7 +207,11 @@
         }
       }
     },
+    "Ver. %@" : {
+
+    },
     "Ver. 1.00" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
