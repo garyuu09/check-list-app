@@ -26,7 +26,13 @@ enum DisplayMode: String {
 }
 
 struct SettingView: View {
+    @EnvironmentObject var networkState: MonitoringNetworkState
     @AppStorage("displayMode") private var displayMode: DisplayMode = .system
+    let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "Unknown"
+    // TODO: debug時のみ、build番号を表示するようにする。
+    let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "Unknown"
+    let privacyPolicyURL = URL(string: "https://garyuu09.github.io/shopping-check-list-privacy-policy/")
+    let appStoreURL = URL(string: "itms-apps://apps.apple.com/en/app/simple-shopping-checklist/id6499101372")
 
     var body: some View {
         NavigationStack {
@@ -50,18 +56,36 @@ struct SettingView: View {
                 }
                 Section("About Shopping CheckList App") {
                     // TODO: Ver.2.00で対応する。
-//                    NavigationLink("Terms of Service", destination: TermsOfServiceView())
-                    NavigationLink("Privacy Policy", destination: WebView(url: URL(string: "https://garyuu09.github.io/shopping-check-list-privacy-policy/")!))
-                    NavigationLink("Review App", destination: WebView(url: URL(string: "https://apps.apple.com/us/app/id6499101372?action=write-review")!))
+                    // NavigationLink("Terms of Service", destination: TermsOfServiceView())
+                    NavigationLink {
+                        //ここに遷移させたいViewのインスタンスを渡す
+                        if networkState.isConnected {
+                            WebView(url: privacyPolicyURL!)
+                        } else {
+                            ContentUnavailableView(
+                                "No Internet",
+                                systemImage: "wifi.exclamationmark",
+                                description: Text("Try checking the network cables, modem, and router or reconnecting to Wi-Fi.")
+                            )
+                        }
+                    } label: {
+                        Text("Privacy Policy")
+                    }
+                    Button("Review App") {
+                        // URL が有効かどうかチェックしてから開く
+                        if let url = appStoreURL, UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url)
+                        }
+                    }
                 }
 
                 Section {
                     //
                 } footer: {
                     VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
-                        Text("©Shopping CheckList")
+                        Text("©Simple Shopping CheckList")
                             .font(.caption)
-                        Text("Ver. 1.00")
+                        Text("Ver. \(version)")
                             .font(.caption2)
                     })
                     .frame(maxWidth: .infinity)

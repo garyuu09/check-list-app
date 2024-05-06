@@ -1,7 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "©Shopping CheckList" : {
+    "©Simple Shopping CheckList" : {
 
     },
     "2024/05/03" : {
@@ -73,6 +73,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ライト"
+          }
+        }
+      }
+    },
+    "No Internet" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インターネット未接続"
           }
         }
       }
@@ -167,6 +177,16 @@
         }
       }
     },
+    "Try checking the network cables, modem, and router or reconnecting to Wi-Fi." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "インターネットに接続されていません。機内モードをオフにするか、Wi-Fiネットワークに接続してください。"
+          }
+        }
+      }
+    },
     "Unchecked" : {
       "localizations" : {
         "ja" : {
@@ -187,7 +207,11 @@
         }
       }
     },
+    "Ver. %@" : {
+
+    },
     "Ver. 1.00" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

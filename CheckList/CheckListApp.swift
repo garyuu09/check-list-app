@@ -16,6 +16,7 @@ struct CheckListApp: App {
         WindowGroup {
             LaunchScreen()
                 .preferredColorScheme(displayMode == .system ? nil : (displayMode == .dark ? .dark : .light))
+                .environmentObject(MonitoringNetworkState())
         }
         .modelContainer(for: [ChecklistItem.self])
     }
