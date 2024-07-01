@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 // チェックリストのビュー
-struct ContentView: View {
+struct CheckListView: View {
     @State private var textFieldInput = ""
     @State private var isShowAddItemSheet = false
     @State private var itemEdit: ChecklistItem?
@@ -164,5 +164,5 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView()
+    CheckListView()
 }
