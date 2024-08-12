@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:CheckList.xcodeproj">
+   </FileRef>
+   <Group
+      location = "group:fastlane"
+      name = "fastlane">
+      <FileRef
+         location = "group:/Users/hashiryuuware/swift-projects/CheckList/fastlane/Fastfile">
+      </FileRef>
+      <FileRef
+         location = "group:/Users/hashiryuuware/swift-projects/CheckList/fastlane/Appfile">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:Gemfile">
+   </FileRef>
+   <FileRef
+      location = "group:Gemfile.lock">
+   </FileRef>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+</Workspace>
