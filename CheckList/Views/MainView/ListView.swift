@@ -63,7 +63,7 @@ struct ListView: View {
                 Spacer()
             }
             .contentShape(Rectangle())
-            .onTapGesture {
+            .onTapGesture(count: 2) {
                 itemEdit = item
             }
             Image(systemName: "xmark")
