@@ -26,7 +26,14 @@ struct ListView: View {
         List {
             Section("Unchecked") {
                 ForEach(uncheckedItems) { item in
-                    checklistRow(for: item)
+                    ChecklistRowView(
+                        item: item,
+                        onToggle: { toggleChecked(for: item) },
+                        onEdit: { itemEdit = item }
+                    )
+                }
+                .onDelete { indexSet in
+                    deleteItems(items: uncheckedItems, at: indexSet)
                 }
                 .onMove { source, destination in
                     var updatedItems = uncheckedItems
@@ -38,7 +45,14 @@ struct ListView: View {
             }
             Section("Checked") {
                 ForEach(checkedItems) { item in
-                    checklistRow(for: item)
+                    ChecklistRowView(
+                        item: item,
+                        onToggle: { toggleChecked(for: item) },
+                        onEdit: { itemEdit = item }
+                    )
+                }
+                .onDelete { indexSet in
+                    deleteItems(items: checkedItems, at: indexSet)
                 }
                 .onMove { source, destination in
                     var updatedItems = checkedItems
@@ -50,33 +64,11 @@ struct ListView: View {
             }
         }
     }
-    /// チェックリストの各行を表示するビュー
-    func checklistRow(for item: ChecklistItem) -> some View {
-        HStack {
-            Image(systemName: item.isChecked ? "checkmark.square" : "square")
-                .onTapGesture {
-                    toggleChecked(for: item)
-                }
-            HStack {
-                Text(item.title)
-                    .strikethrough(item.isChecked, color: .primary)
-                Spacer()
-            }
-            .contentShape(Rectangle())
-            .onTapGesture(count: 2) {
-                itemEdit = item
-            }
-            Image(systemName: "xmark")
-                .onTapGesture {
-                    withAnimation {
-                        delete(item: item)
-                    }
-                }
+
+    func deleteItems(items: [ChecklistItem], at offsets: IndexSet) {
+        for index in offsets {
+            context.delete(items[index])
         }
-    }
-    // データの削除
-    func delete(item: ChecklistItem) {
-        context.delete(item)
     }
     // 項目のチェック状態をトグルする
     func toggleChecked(for item: ChecklistItem) {
