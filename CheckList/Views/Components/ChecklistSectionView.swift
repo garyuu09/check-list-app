@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChecklistSectionView: View {
-    let title: String
+    let title: LocalizedStringKey
     let items: [ChecklistItem]
     let onToggle: (ChecklistItem) -> Void
     let onEdit: (ChecklistItem) -> Void
