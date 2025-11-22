@@ -8,8 +8,37 @@
 import SwiftUI
 
 struct CheckedView: View {
+    @State private var searchText: String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            Tab("All", systemImage: "checklist") {
+                ContentView()
+                    .searchable(text: $searchText)
+            }
+
+
+            Tab("Unchecked", systemImage: "checklist.unchecked") {
+                EmptyView()
+            }
+
+
+            TabSection("Messages") {
+                Tab("Checked", systemImage: "checklist.checked") {
+                    EmptyView()
+                }
+
+
+            }
+            Tab(role: .search) {
+                NavigationStack {
+                    Color.red
+//                        .searchable(text: $searchText)
+                }
+            }
+        }
+        .searchable(text: .constant(""))
+//        .tabViewStyle(.sidebarAdaptable)
     }
 }
 
