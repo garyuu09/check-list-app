@@ -14,15 +14,23 @@ struct AddItemView: View {
     @Binding var textFieldInput: String
     @Binding var isShowAddItemSheet: Bool
 
+    @FocusState private var isFocused: Bool
+
     var body: some View {
         VStack(spacing: 10) {
             TextField("Enter your title here", text: $textFieldInput)
+                .focused($isFocused)
                 .overlay(
                     RoundedRectangle(cornerSize: CGSize(width: 8.0, height: 8.0))
                         .stroke(.gray, lineWidth: 2.0)
                         .padding(-8.0)
                 )
                 .padding(16.0)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        isFocused = true
+                    }
+                }
             Button("Add") {
                 add(item: ChecklistItem(title: textFieldInput, isChecked: false, orderIndex: items.count ))
                 textFieldInput = ""
